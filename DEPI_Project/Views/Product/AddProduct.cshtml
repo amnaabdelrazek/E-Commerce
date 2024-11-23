@@ -1,0 +1,37 @@
+﻿
+@model Product
+@{
+    ViewBag.Title = "إضافة منتج";
+}
+
+<h1>إضافة منتج جديد</h1>
+
+<form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ProfilePicture">اختر صورة المنتج</label>
+        <input type="file" name="ProfilePicture" class="form-control" />
+        <span for="ProfilePicture" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">إضافة منتج</button>
+</form>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DEPI_Project.Models.Product>
+@{
+    ViewBag.Title = "منتجات متجري";
+}
+
+<h1>منتجات متجري</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>اسم المنتج</th>
+            <th>الوصف</th>
+            <th>السعر</th>
+            <th>التحكم</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@product.Id" class="btn btn-warning">تعديل</a>
+                    <form asp-action="DeleteProduct" asp-route-id="@product.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">حذف</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="AddProduct" class="btn btn-success">إضافة منتج جديد</a>
